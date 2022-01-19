@@ -1,0 +1,29 @@
+def isprime(x):
+    if(x<2):
+        return 0 
+    for i in range(2,int(x**0.5)+1):
+        if(x%i==0):
+            return 0 
+    return 1 
+def prevprime(x):
+    x-=1 
+    if(x<2):
+        return 0 
+    for i in range(x,1,-1):
+        if(isprime(i)):
+            return i
+    return 0
+r,c=map(int,input().strip().split())
+l=[[0]+list(map(int,input().strip().split()))+[0] for i in range(r)]
+d=int(input())
+for t in range(d):
+    x=[a[:] for a in l]
+    for i in range(r):
+        for j in range(1,c+1):
+            if(isprime(x[i][j])):
+                x[i][j]+=x[i][j]-prevprime(x[i][j]) 
+            else:
+                x[i][j]+=l[i][j-1]%10+l[i][j+1]%10 
+    l=[a[:] for a in x]
+for x in l:
+    print(*x[1:-1])
