@@ -1,0 +1,33 @@
+INPUT:
+4
+ram
+moghan
+anita
+nithya
+
+
+output:
+ram
+moghan
+nithya
+anitha
+
+
+
+t=int(input())
+z=[input().strip() for i in range(t)]
+a,b='',''
+c=0
+for i in z:
+    a+=i[0]
+    b+=i[-1]
+v=a+b 
+for i in a:
+    if v.count(i)==1:
+        s=i 
+while c<t:
+    for i in z:
+        if i[0]==s:
+            s=i[-1]
+            print(i) 
+    c+=1
